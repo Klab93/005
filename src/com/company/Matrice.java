@@ -1,13 +1,12 @@
 package com.company;
 
-import java.util.Arrays;
 import java.util.function.BinaryOperator;
 
 public class Matrice {
-    private int n;
-    private int m;
+    final private int n;
+    final private int m;
     private int mod;
-    private int[][] matrice;
+    final private int[][] matrice;
 
     private Matrice(int n, int m){
         if (n < 0 || m < 0) {
