@@ -32,7 +32,7 @@ public class Matrice {
      *
      * @throws RuntimeException si le modulo est négatif ou nul
      */
-    private Matrice(int n, int m){
+    private Matrice(int n, int m) {
         if (n < 0 || m < 0) {
             throw new RuntimeException();
         }
@@ -48,8 +48,8 @@ public class Matrice {
      *
      * @throws RuntimeException si le modulo est négatif ou nul
      */
-    public Matrice(int[][] values, int n, int m, int modulo){
-        this(n,m);
+    public Matrice(int[][] values, int n, int m, int modulo) {
+        this(n, m);
         if (modulo <= 0) {
             throw new RuntimeException();
         }
@@ -66,14 +66,14 @@ public class Matrice {
      *
      * @throws RuntimeException si le modulo est négatif ou nul
      */
-    public Matrice(int n, int m, int modulo){
-        this(n,m);
+    public Matrice(int n, int m, int modulo) {
+        this(n, m);
         if (modulo <= 0) {
             throw new RuntimeException();
         }
         this.mod = modulo;
-        for(int i = 0; i < n; ++i){
-            for(int j = 0;j < m; ++j){
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0;j < m; ++j) {
                 matrice[i][j] = (int) Math.round(Math.random() * modulo);
             }
         }
@@ -86,8 +86,8 @@ public class Matrice {
     @Override
     public String toString() {
         String s = "";
-        for(int i = 0; i < n; ++i){
-            for(int j = 0;j < m; ++j){
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0;j < m; ++j) {
                 s += matrice[i][j];
             }
             s += "\n";
@@ -100,8 +100,8 @@ public class Matrice {
      * 
      * @throws RuntimeException si les deux matrices ont un modulo différent
      */
-    private Matrice operation(Matrice other, Operation op){
-        if(this.mod != other.mod){
+    private Matrice operation(Matrice other, Operation op) {
+        if (this.mod != other.mod) {
             throw new RuntimeException();
         }
         int nMax = Math.max(this.n, other.n);
@@ -109,9 +109,9 @@ public class Matrice {
         Matrice one = new Matrice(this.matrice, nMax, mMax, this.mod);
         Matrice two = new Matrice(other.matrice, nMax, mMax, other.mod);
         Matrice res = new Matrice(nMax, mMax);
-        for(int i = 0; i < nMax; ++i){
-            for(int j = 0;j < mMax; ++j){
-                res.matrice[i][j] =  Math.floorMod(
+        for (int i = 0; i < nMax; ++i) {
+            for (int j = 0;j < mMax; ++j) {
+                res.matrice[i][j] = Math.floorMod(
                     op.apply(one.matrice[i][j], two.matrice[i][j]),
                     this.mod
                 );
@@ -125,7 +125,7 @@ public class Matrice {
      *
      * @throws RuntimeException si les deux matrices ont un modulo différent
      */
-    public Matrice add(Matrice other){
+    public Matrice add(Matrice other) {
         return operation(other, new Addition());
     }
 
@@ -135,7 +135,7 @@ public class Matrice {
      *
      * @throws RuntimeException si les deux matrices ont un modulo différent
      */
-    public Matrice sub(Matrice other){
+    public Matrice sub(Matrice other) {
         return operation(other, new Soustraction());
     }
 
@@ -145,7 +145,7 @@ public class Matrice {
      *
      * @throws RuntimeException si les deux matrices ont un modulo différent
      */
-    public Matrice mult(Matrice other){
+    public Matrice mult(Matrice other) {
         return operation(other, new Multiplication());
     }
 }

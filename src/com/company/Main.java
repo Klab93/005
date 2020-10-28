@@ -3,7 +3,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        if(args.length != 5 && args.length != 6){
+        if (args.length != 5 && args.length != 6) {
             throw new RuntimeException();
         }
 
@@ -12,9 +12,9 @@ public class Main {
         int n2 = Integer.parseInt(args[2]);
         int m2 = Integer.parseInt(args[3]);
         int n  = Integer.parseInt(args[4]);
-        if(args.length == 5){
+        if (args.length == 5) {
             test(n1,m1,n2,m2,n);
-        }else{
+        } else {
             int m = Integer.parseInt(args[5]);
             test(n1,m1,n2,m2,n,m);
         }
