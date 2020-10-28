@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.function.BinaryOperator;
-
 public class Matrice {
     final private int n;
     final private int m;
@@ -55,7 +53,7 @@ public class Matrice {
         return s;
     }
 
-    public Matrice operation(Matrice other, BinaryOperator<Integer> op){
+    public Matrice operation(Matrice other, Operation op){
         if(this.mod != other.mod){
             throw new RuntimeException();
         }
@@ -73,14 +71,14 @@ public class Matrice {
     }
 
     public Matrice add(Matrice other){
-        return operation(other, ( i, j) -> i + j);
+        return operation(other, new Addition());
     }
 
     public Matrice sub(Matrice other){
-        return operation(other, ( i,  j) -> i - j);
+        return operation(other, new Soustraction());
     }
 
     public Matrice mult(Matrice other){
-        return operation(other, ( i,  j) -> i * j);
+        return operation(other, new Multiplication());
     }
 }
